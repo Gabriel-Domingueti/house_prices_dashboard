@@ -2,12 +2,15 @@ import dash
 from src.data.loader import load_raw, clean_data
 from src.dashboard import layout, callbacks
 from src.ml.model import train
+from src.analysis.eda import correlation_with_target
 
 df = clean_data(load_raw())
+
+top_correlations = correlation_with_target(df).index.tolist() 
+
 df["OverallQual"] = df["OverallQual"].astype(str)
 
 pipeline, metrics = train(df)
-print(f"Modelo treinado — R²: {metrics['r2']} | RMSE: ${metrics['rmse']:,.0f}")
 
 app = dash.Dash(
     __name__,
@@ -15,7 +18,7 @@ app = dash.Dash(
     suppress_callback_exceptions=True,
 )
 
-app.layout = layout.create_layout(df, pipeline, metrics)
+app.layout = layout.create_layout(df, pipeline, metrics, top_correlations)
 
 callbacks.register_callbacks(app, df, pipeline, metrics)
 
