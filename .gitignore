@@ -1,0 +1,19 @@
+# Dataset — nunca versionar dados brutos
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ambientes
+.env
+*.egg-info/
+
+# IDEs
+.vscode/
+.idea/

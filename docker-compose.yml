@@ -1,0 +1,9 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "8050:8050"       # porta_sua_maquina:porta_container
+    volumes:
+      - .:/app            # sua pasta local montada dentro do container
+    environment:
+      - DASH_DEBUG=true   # hot reload: salva o arquivo, Dash recarrega sozinho
