@@ -1,5 +1,6 @@
 # Dataset — nunca versionar dados brutos
-data/raw/
+data/raw/*
+!data/raw/train.csv
 data/processed/
 
 # Python
