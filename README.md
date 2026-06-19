@@ -7,6 +7,11 @@ Dashboard interativo de análise exploratória e previsão de preços de imóvei
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5-orange?logo=scikit-learn&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 ![Tests](https://img.shields.io/badge/testes-45%20passed-brightgreen?logo=pytest)
+![Deploy](https://img.shields.io/badge/deploy-Render-46E3B7?logo=render&logoColor=white)
+
+### 🔗 [Acesse o dashboard ao vivo](https://house-prices-dashboard.onrender.com)
+
+> ⚠️ Hospedado no plano gratuito do Render — o app "dorme" após 15 minutos sem acesso. Se a primeira tela demorar a carregar, aguarde de 30 a 50 segundos enquanto o serviço reinicia.
 
 ---
 
@@ -35,7 +40,7 @@ Este projeto utiliza o dataset [House Prices](https://www.kaggle.com/competition
 house_prices_dashboard/
 │
 ├── data/
-│   ├── raw/               # CSV original do Kaggle (não versionado)
+│   ├── raw/               # CSV original do Kaggle (versionado)
 │   └── processed/         # Dados processados
 │
 ├── src/
@@ -86,15 +91,9 @@ git clone https://github.com/Gabriel-Domingueti/house_prices_dashboard.git
 cd house_prices_dashboard
 ```
 
-### 2. Adicione o dataset
+O dataset (`train.csv`) já vem versionado no repositório em `data/raw/`, então não é necessário baixar nada manualmente.
 
-Baixe o arquivo `train.csv` em [kaggle.com/competitions/house-prices-advanced-regression-techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data) e coloque em:
-
-```
-data/raw/train.csv
-```
-
-### 3. Rode com Docker
+### 2. Rode com Docker
 
 ```bash
 docker compose up --build
@@ -102,7 +101,7 @@ docker compose up --build
 
 Acesse em [http://localhost:8050](http://localhost:8050)
 
-### 4. Ou rode localmente com Miniconda
+### 3. Ou rode localmente com Miniconda
 
 ```bash
 pip install -r requirements.txt
@@ -156,6 +155,12 @@ O projeto mantém cobertura de testes em todos os módulos principais:
 | `scikit-learn` | Pipeline de ML |
 | `pytest` | Testes automatizados |
 | `Docker` | Containerização |
+
+---
+
+## ☁️ Deploy
+
+O dashboard está hospedado gratuitamente no [Render](https://render.com), usando o `Dockerfile` do projeto diretamente — sem necessidade de configuração adicional além de tornar a porta dinâmica (`os.environ.get("PORT")`) para compatibilidade com a plataforma.
 
 ---
 
